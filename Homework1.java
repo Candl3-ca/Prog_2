@@ -15,9 +15,11 @@ public class Main {
 //        System.out.println("Character: "+val);
 //        if (Character.isUpperCase(val)) {
 //            System.out.println("Character is in Uppercase!");
-//        }else {
+//        }else if (Character.isLowerCase(val)) {
 //            System.out.println("Character is in Lowercase!");
-//        }
+//        } else {
+//            System.out.println("This isn't a character");
+//    }
 
 //        Task 2
 //        System.out.println("Hello student, please input your height in cm : ");
@@ -79,7 +81,7 @@ public class Main {
 //        int months = (days % 365) / 30;
 //        System.out.println("Number of years: "+years);
 //        System.out.println("Number of months: "+months);
-//        System.out.println("Number of days: "+days);
+//        System.out.println("Are all in this number of days: "+days);
 
 ////       Sorry got a bit bored with this one
 ////
@@ -129,9 +131,9 @@ public class Main {
 //        temp = num;
 //        int length = String.valueOf(num).length();
 //
-//                On each run, the last digit of num is stored in the temp.
-//                Then, remainder is powered by x (number of digits) using Math.pow() and is added to the sum.
-//                Then, the last digit is removed from originalNumber after division by 10.
+////                On each run, the last digit of num is stored in the temp.
+////                Then, remainder is powered by x (number of digits) using Math.pow() and is added to the sum.
+////                Then, the last digit is removed from originalNumber after division by 10.
 //
 //        while (temp != 0) {
 //            dig = temp % 10;

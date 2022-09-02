@@ -60,70 +60,95 @@ public class Main {
 
 
 //         Taking 12 numbers and printing the in a 3 by 4 matrix as well as their sum
+//
+//
+//         System.out.println("Enter 12 numbers");
+//         int[] list2 = new int[12];
+//         int[][] matrix = new int[3][4];
+//
+//            for (int i = 0; i < 12; i++) {
+//                list2[i] = sc.nextInt();
+//            }
+//
+//            for (int i = 0; i < 3; i++) {
+//                for (int j = 0; j < 4; j++) {
+//                    matrix[i][j] = list2[i * 4 + j];
+//                }
+//            }
+//
+//            for (int i = 0; i < 3; i++) {
+//                for (int j = 0; j < 4; j++) {
+//                    System.out.print(matrix[i][j] + " ");
+//                }
+//                System.out.println();
+//            }
+//
+//         System.out.println("The sum of the 12 numbers is " + Arrays.stream(list2).sum());
+//
+//        System.out.println("The sum of each row is ");
+//        for (int i = 0; i < 3; i++) {
+//            int sum = 0;
+//            for (int j = 0; j < 4; j++) {
+//                sum += matrix[i][j];
+//            }
+//            System.out.println(sum);
+//        }
+//        System.out.println("The sum of each column is ");
+//        for (int i = 0; i < 4; i++) {
+//            int sum = 0;
+//            for (int j = 0; j < 3; j++) {
+//                sum += matrix[j][i];
+//            }
+//            System.out.println(sum);
+//        }
+//
+//
+//        System.out.println("Enter a number to search");
+//        int num = sc.nextInt();
+//
+//        int count = 0;
+//        for (int i = 0; i < 12; i++) {
+//            if (list2[i] == num) {
+//                count++;
+//            }
+//        }
+//
+//        System.out.println("The number " + num + " is found " + count + " times");
+//
+//        System.out.println("Printing rows and columns where the number is found");
+//        for (int i = 0; i < 3; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                if (matrix[i][j] == num) {
+//                    System.out.println("The number " + num + " is found at row " + (i + 1) + " and column " + (j + 1) + ".");
+//                }
+//            }
 
+//        Write a program that takes numbers in 2d 4 by 4 matrix and prints them in descending order.
 
-         System.out.println("Enter 12 numbers");
-         int[] list2 = new int[12];
-         int[][] matrix = new int[3][4];
+//        NEEDS TO BE FIXED
 
-            for (int i = 0; i < 12; i++) {
-                list2[i] = sc.nextInt();
-            }
-
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 4; j++) {
-                    matrix[i][j] = list2[i * 4 + j];
-                }
-            }
-
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 4; j++) {
-                    System.out.print(matrix[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-         System.out.println("The sum of the 12 numbers is " + Arrays.stream(list2).sum());
-
-        System.out.println("The sum of each row is ");
-        for (int i = 0; i < 3; i++) {
-            int sum = 0;
-            for (int j = 0; j < 4; j++) {
-                sum += matrix[i][j];
-            }
-            System.out.println(sum);
-        }
-        System.out.println("The sum of each column is ");
-        for (int i = 0; i < 4; i++) {
-            int sum = 0;
-            for (int j = 0; j < 3; j++) {
-                sum += matrix[j][i];
-            }
-            System.out.println(sum);
-        }
-
-
-        System.out.println("Enter a number to search");
-        int num = sc.nextInt();
-
-        int count = 0;
-        for (int i = 0; i < 12; i++) {
-            if (list2[i] == num) {
-                count++;
-            }
-        }
-
-        System.out.println("The number " + num + " is found " + count + " times");
-
-        System.out.println("Printing rows and columns where the number is found");
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (matrix[i][j] == num) {
-                    System.out.println("The number " + num + " is found at row " + (i + 1) + " and column " + (j + 1) + ".");
-                }
-            }
-        }
-
-
+//        System.out.println("Enter 12 numbers");
+//        int[] list2 = new int[12];
+//        int[][] matrix = new int[4][4];
+//        for (int i = 0; i < 12; i++) {
+//            list2[i] = sc.nextInt();
+//        }
+//        System.out.println("Number in descending order");
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                if (matrix[i][j] > matrix[i][j + 1]) {
+//                    int temp = matrix[i][j];
+//                    matrix[i][j] = matrix[i][j + 1];
+//                    matrix[i][j + 1] = temp;
+//                }
+//            }
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                System.out.print(matrix[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//
     }
 }

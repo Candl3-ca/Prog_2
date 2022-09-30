@@ -13,6 +13,10 @@ public class Main {
         Book book = new Book("Java for dummies", author, 19.95, 99);
 
         System.out.println(book.toString());
+        
+        Book anotherBook = new Book("More Java for dummies", new Author("Pepega champ", "whomegalol@yahoo.ca", 'M'), 29.95, 8);
+
+        System.out.println(anotherBook.toString());
 
     }
 }

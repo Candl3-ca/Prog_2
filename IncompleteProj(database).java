@@ -59,7 +59,7 @@ public class main {
                     System.out.println("Enter the scientist's number: ");
                     int number_Scientist = 0;
                     number = input.nextInt();
-                    boolean valid = false;
+                    boolean valid = true;
                     while (valid) {
                         if (number_Scientist < 0) {
                             System.out.println("Invalid number");
@@ -72,7 +72,7 @@ public class main {
                                     System.out.println("Enter the scientist's number: ");
                                     number_Scientist = input.nextInt();
                                 } else {
-                                    valid = true;
+                                    valid = false;
                                 }
                             }
 

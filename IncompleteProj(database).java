@@ -1,245 +1,205 @@
+
 import java.util.*;
 
-public class main {
-
+public class Main {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Scientist> s = new ArrayList<Scientist>();
+        ArrayList<Project> p = new ArrayList<Project>();
 
         boolean isRunning = true;
 
-        ArrayList<Scientist> scientists = new ArrayList<Scientist>();
-        ArrayList<Project> projects = new ArrayList<Project>();
+        while(isRunning) {
+            System.out.println("Menu :");
+            System.out.println("1. Add a new Project. 2. Add a new Scientist. 3. Show full information. 4. Show information based on the scientist's name." +
+                    " 5. Delete an existing project. 6. Delete an existing scientist. 7. Exit.");
 
-        while (isRunning) {
-            System.out.println("1- Add a Project 2- Add a Scientist 3- Show all 4- Exit. Enter your choice:  ");
-            int choice = input.nextInt();
-            Project project = null;
+            int choice = sc.nextInt();
+
             switch (choice) {
                 case 1:
-                    project = new Project();
-                    System.out.println("Enter the name of the project: ");
-                    String name;
-                    name = input.next();
-                    if (name == null) {
-                        System.out.println("Please enter a valid name");
-                        name = input.next();
-                    } else if (name == project.getP_name()) {
-                        for (int i = 0; i < projects.size(); i++) {
-                            if (projects.get(i).getName().equals(name)) {
-                                System.out.println("This project already exists");
-                                System.out.println("Enter the name of the project: ");
-                                name = input.next();
+                    System.out.println("Enter the Project name :");
+                    String name = sc.next();
+                    System.out.println("Enter the Project number :");
+                    String number = sc.next();
+                    boolean l = true;
+                    while (l) {
+                        if (p.size() == 0) {
+                            l = false;
+                        } else {
+                            for (int i = 0; i < p.size(); i++) {
+                                if (p.get(i).getNumber().equals(number)) {
+                                    System.out.println("Project number already exists. Please enter a new number.");
+                                    number = sc.next();
+                                } else if (i == p.size() - 1) {
+                                    l = false;
+                                }
                             }
                         }
                     }
-                    System.out.println("Enter the project's number: ");
-                    int number;
-                    number = input.nextInt();
-                    if (number < 0) {
-                        System.out.println("Please enter a valid number");
-                        number = input.nextInt();
-                    } else if (number == project.getP_number()) {
-                        for (int i = 0; i < projects.size(); i++) {
-                            if (projects.get(i).getNumber() == number) {
-                                System.out.println("This project already exists");
-                                System.out.println("Enter the project's number: ");
-                                number = input.nextInt();
-                            }
-                        }
-                    }
-                    Project p = new Project(name, number);
-                    projects.add(p);
+                    Project p1 = new Project(number, name);
+                    p.add(p1);
                     break;
                 case 2:
-                    Scientist scientist = new Scientist();
-                    System.out.println("Enter the name of the scientist: ");
-                    String name_Scientist = null;
-                    name = input.next();
-                    System.out.println("Enter the scientist's number: ");
-                    int number_Scientist = 0;
-                    number = input.nextInt();
-                    boolean valid = true;
-                    while (valid) {
-                        if (number_Scientist < 0) {
-                            System.out.println("Invalid number");
-                            System.out.println("Enter the scientist's number: ");
-                            number_Scientist = input.nextInt();
+                    System.out.println("Enter the Scientist name :");
+                    String name1 = sc.next();
+                    System.out.println("Enter the Scientist number :");
+                    String number1 = sc.next();
+                    boolean f = true;
+                    while (f) {
+                        if (s.size() == 0) {
+                            f = false;
                         } else {
-                            for (int i = 0; i < scientists.size(); i++) {
-                                if (number_Scientist == scientists.get(i).getNumber()) {
-                                    System.out.println("Invalid number");
-                                    System.out.println("Enter the scientist's number: ");
-                                    number_Scientist = input.nextInt();
-                                } else {
-                                    valid = false;
+                            for (int i = 0; i < s.size(); i++) {
+                                if (s.get(i).getNumber().equals(number1)) {
+                                    System.out.println("Scientist number already exists. Please enter a new number.");
+                                    number1 = sc.next();
+                                    break;
+                                } else if (i == s.size() - 1) {
+                                    f = false;
                                 }
                             }
-
-                            System.out.println("Enter the number of projects the scientist is working on: ");
-                            int number_of_projects;
-                            number_of_projects = input.nextInt();
-                            int project_number = 0;
-                            for (int i = 0; i < number_of_projects; i++) {
-                                System.out.println("Enter the project number: ");
-                                project_number = input.nextInt();
-                                if (project_number < 0) {
-                                    System.out.println("Invalid number");
-                                    System.out.println("Enter the project number: ");
-                                    project_number = input.nextInt();
-                                } else if (project_number == project.getP_number()) {
-                                    for (int j = 0; j < projects.size(); j++) {
-                                        if (project_number == projects.get(j).getNumber()) {
-                                            System.out.println("Invalid number");
-                                            System.out.println("Enter the project number: ");
-                                            project_number = input.nextInt();
-                                        } else {
-                                            valid = true;
-                                        }
-                                    }
-                                }
-
+                        }
+                    }
+                    System.out.println("How many projects does the scientist work on?");
+                    int num = sc.nextInt();
+                    boolean g = true;
+                    while (g) {
+                        System.out.println("Enter the project number :");
+                        String number2 = sc.next();
+                        for (int i = 0; i < p.size(); i++) {
+                            if (p.get(i).getNumber().equals(number2)) {
+                                g = false;
+                                break;
+                            } else if (i == p.size() - 1) {
+                                System.out.println("Project number does not exist. Please enter a new number.");
                             }
-                            Scientist s = new Scientist(name_Scientist, number_Scientist, project_number);
-                            scientists.add(s);
+                        }
+                    }
+                    break;
+                case 3:
+                    if (p.size() == 0) {
+                        System.out.println("There are no projects.");
+                    } else {
+                        for (int i = 0; i < p.size(); i++) {
+                            System.out.println(p.get(i).toString());
+                        }
+                    }
+                    if (s.size() == 0) {
+                        System.out.println("There are no scientists.");
+                    } else {
+                        for (int i = 0; i < s.size(); i++) {
+                            System.out.println(s.get(i).toString());
+                        }
+                    }
+                    break;
+                case 4:
+                    System.out.println("Enter the Scientist name :");
+                    String name2 = sc.next();
+                    for (int i = 0; i < s.size(); i++) {
+                        if (s.get(i).getName().equals(name2)) {
+                            System.out.println(s.get(i).toString());
+                        }
+                    }
+                    break;
+                case 5:
+//                    removing the project while also making sure theres no integrity constraint violation
+                    System.out.println("Enter the project number :");
+                    String projectNumber = sc.next();
+                    for (int i = 0; i < p.size(); i++) {
+                        for (int j = 0; j < s.size(); j++) {
+                            if (p.get(i).getNumber().equals(projectNumber)) {
+                                if (s.get(j).getProjectNumber().equals(projectNumber)) {
+                                    System.out.println("Cannot delete project. There is a scientist working on this project.");
+                                    break;
+                                } else if (j == s.size() - 1) {
+                                    p.remove(i);
+                                    System.out.println("Project deleted.");
+                                }
+                            } else if (i == p.size() - 1) {
+                                System.out.println("Project number does not exist.");
+                            }
+                        }
+                    }
+                    break;
+                case 6:
+                    System.out.println("Enter the scientist number :");
+                    String scientistNumber = sc.next();
+                    for (Scientist scientist : s) {
+                        if (scientist.getNumber().equals(scientistNumber)) {
+                            s.remove(scientist);
                             break;
                         }
                     }
-                            case 3:
-                                System.out.println("Scientists: ");
-                                for (int i = 0; i < scientists.size(); i++) {
-                                    System.out.println(scientists.get(i).toString());
-                                }
-                                System.out.println("Projects: ");
-                                for (int i = 0; i < projects.size(); i++) {
-                                    System.out.println(projects.get(i).toString());
-                                }
-                                break;
-                            case 4:
-                                System.exit(0);
-                                isRunning = false;
-                                break;
-                            default:
-                                System.out.println("Invalid choice");
-                                System.exit(0);
-                                break;
-                        }
-                    }
+                    break;
+                case 7:
+                    isRunning = false;
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+                    System.exit(0);
+                    break;
             }
-
-}
-
-
-class Scientist {
-    private String S_no;
-    private String S_name;
-    private Project P_no;
-    private int number;
-
-    public Scientist(String S_no, String S_name, int P_no) {
-        this.S_no = S_no;
-        this.S_name = S_name;
-        this.P_no = new Project(P_no, number);
-    }
-
-    public Scientist(String name_scientist, int number_scientist, int project_number) {
-
-    }
-
-    public Scientist() {
-
-    }
-
-    public String getS_no() {
-        return S_no;
-    }
-
-    public String getS_name() {
-        return S_name;
-    }
-
-    public int getP_no() {
-        return P_no.getP_no();
-    }
-
-    public void setS_no(String S_no) {
-        this.S_no = S_no;
-    }
-
-    public void setS_name(String S_name) {
-        this.S_name = S_name;
-    }
-
-    public void setP_no(int P_no) {
-        this.P_no = new Project(P_no, number);
-    }
-
-    @Override
-    public String toString() {
-        return "Scientist{" +
-                "S_no='" + S_no + '\'' +
-                ", S_name='" + S_name + '\'' +
-                ", P_no='" + P_no + '\'' +
-                '}';
-    }
-
-    public int getNumber() {
-        return this.number;
+        }
     }
 }
 
-class Project {
-    private int P_no;
-    private String P_name;
+class Project{
+    public String Pnumber_pk;
+    public String Pname;
 
-
-    public Project(int P_no, int number) {
-        this.P_no = P_no;
-        this.P_name = P_name;
+    public Project(String Pnumber_pk, String Pname){
+        this.Pnumber_pk = Pnumber_pk;
+        this.Pname = Pname;
     }
 
-    public Project() {
-
-    }
-
-    public Project(String name, int number) {
-    }
-
-    public int getP_no() {
-        return P_no;
-    }
-
-    public String getP_name() {
-        return P_name;
+    public Project(){
     }
 
 
-    public void setP_no(int P_no) {
-        this.P_no = P_no;
+    public String getNumber() {
+        return Pnumber_pk;
     }
 
-    public void setP_name(String P_name) {
-        this.P_name = P_name;
+    public String getName() {
+        return Pname;
+    }
+}
+
+class Scientist{
+    public String Snumber_pk;
+    public String Sname;
+    public Project Pnumber_fk;
+
+    public Scientist(String Snumber_pk, String Sname, Project Pnumber_fk){
+        this.Snumber_pk = Snumber_pk;
+        this.Sname = Sname;
+        this.Pnumber_fk = Pnumber_fk;
     }
 
-
-    @Override
-    public String toString() {
-        return "Project{" +
-                "P_no='" + P_no + '\'' +
-                ", P_name='" + P_name + '\'' +
-                '}';
+    public Scientist(){
     }
 
-    public Object getName() {
-        return this.P_name;
+    public Scientist(String Snumber_pk, String Sname, String Pnumber_fk) {
     }
 
-    public int getP_number() {
-        return this.P_no;
+    public String getName() {
+        return Sname;
     }
 
-    public int getNumber() {
-        return this.P_no;
+    public String getProjectNumber() {
+        return Pnumber_fk.getNumber();
     }
+
+    public String getNumber() {
+        return Snumber_pk;
+    }
+
+    public Project getProject() {
+        return Pnumber_fk;
+    }
+    
 }

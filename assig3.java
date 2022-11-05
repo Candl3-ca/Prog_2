@@ -65,35 +65,68 @@ public class Main {
                     }
                     System.out.println("How many projects does the scientist work on?");
                     int num = sc.nextInt();
-                    boolean g = true;
-                    while (g) {
+                    if (num == 0) {
+                        System.out.println("OK Scientist has no project.");
+                        break;
+                    }
+                    for (int i = 0; i < num; i++) {
                         System.out.println("Enter the project number :");
                         String number2 = sc.next();
-                        for (int i = 0; i < p.size(); i++) {
-                            if (p.get(i).getNumber().equals(number2)) {
+                        boolean g = true;
+                        while (g) {
+                            if (p.size() == 0) {
+                                System.out.println("There are no projects. Please add a project first.");
                                 g = false;
-                                break;
-                            } else if (i == p.size() - 1) {
-                                System.out.println("Project number does not exist. Please enter a new number.");
+                            } else {
+                                for (int j = 0; j < p.size(); j++) {
+                                    if (p.get(j).getNumber().equals(number2)) {
+                                        System.out.println("Project number already exists. Please enter a new number.");
+                                        number2 = sc.next();
+                                        g = false;
+                                        break;
+                                    } else if (j == p.size() - 1) {
+                                        System.out.println("Project number does not exist. Please enter a new number.");
+                                        number2 = sc.next();
+                                    }
+                                }
                             }
                         }
+                        Scientist s1 = new Scientist(number1, name1, number2);
+                        s.add(s1);
                     }
                     break;
                 case 3:
                     if (p.size() == 0) {
                         System.out.println("There are no projects.");
-                    } else {
-                        for (int i = 0; i < p.size(); i++) {
-                            System.out.println(p.get(i).toString());
-                        }
                     }
                     if (s.size() == 0) {
                         System.out.println("There are no scientists.");
-                    } else {
-                        for (int i = 0; i < s.size(); i++) {
-                            System.out.println(s.get(i).toString());
+                    }
+//                    all assigned projects and their scientists
+                    System.out.println("All assigned projects and their scientists :");
+                    for (int i = 0; i < p.size(); i++) {
+                        System.out.println(p.get(i).getName() + " " + p.get(i).getNumber());
+                        for (int j = 0; j < s.size(); j++) {
+                            if (p.get(i).getNumber().equals(s.get(j).getProjectNumber())) {
+                                System.out.println(s.get(j).getName() + " " + s.get(j).getNumber());
+                            }
                         }
                     }
+
+                    System.out.println("-------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("All unnassigned projects :");
+                    for (int i = 0; i < p.size(); i++) {
+                        boolean h = true;
+                        for (int j = 0; j < s.size(); j++) {
+                            if (p.get(i).getNumber().equals(s.get(j).getProjectNumber())) {
+                                h = false;
+                            }
+                        }
+                        if (h) {
+                            System.out.println(p.get(i).getName() + " " + p.get(i).getNumber());
+                        }
+                    }
+
                     break;
                 case 4:
                     System.out.println("Enter the Scientist name :");
@@ -167,6 +200,11 @@ class Project{
     public String getName() {
         return Pname;
     }
+
+    @Override
+    public String toString() {
+        return "Project name : " + Pname + " Project number : " + Pnumber_pk;
+    }
 }
 
 class Scientist{
@@ -201,5 +239,9 @@ class Scientist{
     public Project getProject() {
         return Pnumber_fk;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Scientist name : " + Sname + " Scientist number : " + Snumber_pk + " Project number : " + Pnumber_fk.getNumber();
+    }
 }
